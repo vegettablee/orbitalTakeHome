@@ -1,0 +1,27 @@
+{
+  "name": "orbitaltakehome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js",
+    "client": "react-scripts start",
+    "dev": "concurrently \"node main.js\" \"react-scripts start\"",
+    "build": "react-scripts build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-scripts": "^5.0.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
