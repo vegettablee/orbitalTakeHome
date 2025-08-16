@@ -1,3 +1,5 @@
+OVERVIEW OF CLIENT
+
 Client
 Src/
 hooks/
@@ -44,4 +46,4 @@ UnderconstructionPage
 Each page, with the exception of the homePage and UnderconstructionPage, had each static components, which were the title and the slug, which are used as identifiers for the back-end calls and for rendering the information as well.
 
 Disclosure: the page components were generated using Claude, due to losing all of the front-end originally, I generated
-separate components for each page, but all of the logic and routing was done by me.
+separate components for each page, but all of the logic and routing was done by me. Also, in regards to the useEffect on each page, I understand that this isn't the best practice because of wasted API calls, however, this is such a small scale project, I decided to use it. Otherwise, I would either use a caching layer or an alternative.

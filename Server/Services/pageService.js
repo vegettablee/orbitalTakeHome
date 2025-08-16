@@ -31,23 +31,6 @@ const getPageInformation = async (slugs) => {
   }
 };
 
-// had an issue with the client requests, so i added validation to fix it
-const normalizeSlugs = (slugsInput) => {
-  if (!slugsInput) return [];
-  if (Array.isArray(slugsInput)) {
-    // Handles ['a', 'b,c'] -> ['a','b','c']
-    return slugsInput
-      .flatMap((s) => String(s).split(","))
-      .map((s) => s.trim())
-      .filter(Boolean);
-  }
-  // Handles "a,b,c" or "a"
-  return String(slugsInput)
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean);
-};
-
 module.exports = {
   getPageStatuses,
   getPageInformation,

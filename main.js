@@ -12,8 +12,8 @@ const { createPageSchemas } = require("./Server/Services/createPageSchemas.js");
 // Enable CORS for local frontend
 app.use(
   cors({
-    origin: "http://localhost:3001", // your frontend origin
-    credentials: true, // only if you use cookies/auth headers
+    origin: "http://localhost:3001",
+    credentials: true,
   })
 );
 // Routes
