@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+Client
+Src/
+hooks/
+page.js
+This hook was used on each page, to render the information,
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+services/
+network.js, this function had a class with two main methods :
+Fetching the statuses of each page
+Fetching the information of each page, given the unique page identifier(slug)
 
-## Available Scripts
+components/
+Navbar
 
-In the project directory, you can run:
+App.js
+On start, I had one main useState, useEffect, helper function, which was:
 
-### `npm start`
+useState = [livePages, setLivePages]
+This was used to keep track of the statuses of each page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+One app render,
+useEffect
+called the network function to fetch all of the statuses of the pages, regardless of whether they were live or under construction
+Once this was done, i used .then after to filter these pages, that if the status was == “LIVE”, keep, if else, then filter out, then I set this value to livePages
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+HelperFunction(pageTitle)
+Takes in the pageTitle as a parameter
+This function returned true or false, if it was true then show the current page’s information, if not, then display the under construction screen
+For evaluating true or false, I used the array of livePages, turned it into a set, and then compared the title that was passed through to check if it was actually in the set, if it was, return true, if not, then return false
 
-### `npm test`
+Afterwards, in the App.js file, I used a main router to route to each page, and it looked somewhat like this:
+<App>
+<navbar>
+<HelperFunction() ? homescreen : underconstruction >
+… for each page with the exception of the homePage
+</App>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+pages/
+HomePage
+AboutPage
+ProfilePage
+SettingsPage
+UnderconstructionPage
+Each page, with the exception of the homePage and UnderconstructionPage, had each static components, which were the title and the slug, which are used as identifiers for the back-end calls and for rendering the information as well.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Disclosure: the page components were generated using Claude, due to losing all of the front-end originally, I generated
+separate components for each page, but all of the logic and routing was done by me.
